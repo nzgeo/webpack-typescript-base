@@ -10,12 +10,17 @@ module.exports = {
     static: ['./', 'node_modules'],
   },
   devtool: 'inline-source-map',
-  entry: './src/js/index.js',
+  entry: './src/ts/index.ts',
   module: {
     rules: [
       {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
       },
     ],
   },
@@ -38,5 +43,6 @@ module.exports = {
     alias: {
       '~': path.resolve('./node_modules'),
     },
+    extensions: ['.tsx', '.ts', '.js'],
   },
 };
